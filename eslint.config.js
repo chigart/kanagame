@@ -8,7 +8,7 @@ export default [
   js.configs.recommended,
   {
     files: ['**/*.{js,ts,vue}'],
-    ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'public/**'],
+    ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'public/**', 'dist/**/*'],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
@@ -24,6 +24,8 @@ export default [
         console: 'readonly',
         window: 'readonly',
         document: 'readonly',
+        alert: 'readonly',
+        localStorage: 'readonly',
       },
     },
     plugins: {

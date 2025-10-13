@@ -13,6 +13,8 @@ import { kanaList } from '../data/hiragana'
 import KanaDisplay from './KanaDisplay.vue'
 import InputPhase from './InputPhase.vue'
 import ScoreScreen from './ScoreScreen.vue'
+import { wallet } from '../stores/wallet'
+import { leaderboard } from '../stores/leaderboard'
 
 const phase = ref<'idle' | 'memorize' | 'input' | 'score'>('idle')
 const currentKana = ref<{ kana: string; romaji: string }[]>([])
@@ -31,8 +33,24 @@ function toInput() {
   phase.value = 'input'
 }
 
-function onScore(result: number) {
+async function onScore(result: number) {
   score.value = result
+
+  if (!wallet.address) {
+    alert('Connect wallet to verify your skill')
+    return
+  }
+
+  const message = `Proof of Kana – Score ${score.value}%`
+  const signature = await wallet.signMessage(message)
+
+  leaderboard.addScore({
+    address: wallet.address,
+    score: score.value,
+    signature,
+    time: new Date().toISOString(),
+  })
+
   phase.value = 'score'
 }
 </script>

@@ -21,10 +21,7 @@ const emit = defineEmits(['done'])
 
 let timeoutId: number
 
-onMounted(() => {
-  // display kana for 8 seconds
-  timeoutId = setTimeout(() => emit('done'), 8000)
-})
+onMounted(() => (timeoutId = setTimeout(() => emit('done'), 3000)))
 
 onUnmounted(() => {
   clearTimeout(timeoutId)
