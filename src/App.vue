@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
+import Game from './components/Game.vue'
 </script>
 
 <template>
@@ -10,4 +11,5 @@ import { motion } from 'motion-v'
   >
     Proof of Kana
   </motion.h1>
+  <Game />
 </template>

@@ -16,6 +16,15 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
+      globals: {
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        console: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
+      },
     },
     plugins: {
       vue,
