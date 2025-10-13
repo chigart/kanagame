@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $color-bg;
+  color: $color-text;
+  font-family: $font-main;
+}
+
+button {
+  border: none;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: background $transition;
+}
