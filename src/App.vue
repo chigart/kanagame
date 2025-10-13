@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { motion } from 'motion-v'
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <motion.h1
+    :initial="{ opacity: 0, y: 30 }"
+    :animate="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 1 }"
+  >
+    Proof of Kana
+  </motion.h1>
 </template>
