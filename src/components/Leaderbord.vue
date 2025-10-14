@@ -26,7 +26,7 @@ function shortAddress(a: string) {
   padding: 1rem;
   border: 1px solid $color-accent-secondary;
   border-radius: $radius;
-  background: rgba(179, 0, 255, 0.05);
+  background: $color-overlay-purple-light;
 
   h2 {
     color: $color-accent-primary;
@@ -43,13 +43,13 @@ function shortAddress(a: string) {
   justify-content: space-between;
   width: 200px;
   padding: 0.5rem;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  border-bottom: 1px solid $border-cyan-light;
   font-family: $font-main;
   color: $color-text;
   transition: all $transition;
 
   &:hover {
-    background: rgba(0, 255, 255, 0.05);
+    background: $color-overlay-cyan-light;
     color: $color-accent-primary;
   }
 

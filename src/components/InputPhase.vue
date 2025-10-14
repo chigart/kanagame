@@ -52,12 +52,12 @@ function finish() {
   padding: 1rem;
   border: 1px solid $color-accent-secondary;
   border-radius: $radius;
-  background: rgba(179, 0, 255, 0.05);
+  background: $color-overlay-purple-light;
   transition: all $transition;
 
   &:hover {
     box-shadow: $glow-purple;
-    background: rgba(179, 0, 255, 0.1);
+    background: $color-overlay-purple-medium;
   }
 }
 
@@ -86,23 +86,23 @@ input {
     outline: none;
     border-color: $color-accent-primary;
     box-shadow: $glow-cyan;
-    background: rgba(0, 255, 255, 0.05);
+    background: $color-overlay-cyan-light;
   }
 
   &::placeholder {
-    color: rgba(0, 255, 255, 0.5);
+    color: $placeholder-cyan;
   }
 
   &.correct {
-    border-color: #00ff00;
-    background: rgba(0, 255, 0, 0.1);
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    border-color: $border-success;
+    background: $color-overlay-success-light;
+    box-shadow: $glow-success;
   }
 
   &.incorrect {
-    border-color: #ff0000;
-    background: rgba(255, 0, 0, 0.1);
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    border-color: $border-error;
+    background: $color-overlay-error-light;
+    box-shadow: $glow-error;
   }
 
   &[readonly] {
@@ -112,10 +112,10 @@ input {
 }
 
 .correct-answer {
-  color: #00ff00;
+  color: $color-success;
   font-weight: 600;
   font-size: 1.1rem;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  text-shadow: $text-shadow-success;
   margin-left: 0.5rem;
 }
 </style>

@@ -1,7 +1,20 @@
 <script setup lang="ts">
 import Game from './components/Game.vue'
+import GameSettings from './components/GameSettings.vue'
 </script>
 
 <template>
-  <Game />
+  <div class="app">
+    <GameSettings />
+    <Game />
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+</style>

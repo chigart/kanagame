@@ -1,31 +1,51 @@
 <template>
   <div class="game-container">
-    <WalletConnectionButton />
-    <KanaDisplay v-if="phase === 'memorize'" :kanaList="currentKana" @done="toInput" />
-    <InputPhase
-      v-if="phase === 'input' || phase === 'feedback'"
-      :kanaList="currentKana"
-      :showAnswers="phase === 'feedback'"
-      @finished="onScore"
-    />
-    <Leaderbord v-if="phase === 'idle' || phase === 'score'" />
-    <ScoreScreen v-if="phase === 'score'" :score="score" @restart="startGame" />
-    <button v-if="phase === 'feedback'" @click="openScore">Next</button>
-    <button
-      v-if="phase === 'idle' || (phase === 'score' && wallet.address !== null)"
-      @click="startGame"
-    >
-      Start Game
-    </button>
+    <LibraryView v-if="gameSettings.gameMode === 'library'" />
+    <template v-else>
+      <WalletConnectionButton v-if="gameSettings.gameMode === 'standard'" />
+      <KanaDisplay
+        v-if="gameSettings.gameMode === 'standard' && phase === 'memorize'"
+        :kanaList="currentKana"
+        @done="toInput"
+      />
+
+      <InputPhase
+        v-if="phase === 'input' || phase === 'feedback'"
+        :kanaList="currentKana"
+        :showAnswers="phase === 'feedback'"
+        @finished="onScore"
+      />
+
+      <Leaderbord
+        v-if="gameSettings.gameMode === 'standard' && (phase === 'idle' || phase === 'score')"
+      />
+      <ScoreScreen
+        v-if="gameSettings.gameMode === 'standard' && phase === 'score'"
+        :score="score"
+        @restart="startGame"
+      />
+
+      <button v-if="phase === 'feedback'" @click="openScore">Next</button>
+      <button
+        v-if="
+          phase === 'idle' ||
+          (phase === 'score' && (gameSettings.gameMode === 'simplified' || wallet.address !== null))
+        "
+        @click="startGame"
+      >
+        Start Game
+      </button>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { kanaList } from '../data/hiragana'
+import { gameSettings } from '../stores/gameSettings'
 import KanaDisplay from './KanaDisplay.vue'
 import InputPhase from './InputPhase.vue'
 import ScoreScreen from './ScoreScreen.vue'
+import LibraryView from './LibraryView.vue'
 import { wallet } from '../stores/wallet'
 import { leaderboard } from '../stores/leaderboard'
 import Leaderbord from './Leaderbord.vue'
@@ -40,8 +60,8 @@ function shuffle<T>(array: T[]) {
 }
 
 function startGame() {
-  currentKana.value = shuffle(kanaList).slice(0, 5)
-  phase.value = 'memorize'
+  currentKana.value = shuffle(gameSettings.currentKanaList).slice(0, 5)
+  phase.value = gameSettings.gameMode === 'simplified' ? 'input' : 'memorize'
 }
 
 function openScore() {
@@ -54,6 +74,11 @@ function toInput() {
 
 async function onScore(result: number) {
   score.value = result
+
+  if (gameSettings.gameMode === 'simplified') {
+    phase.value = 'feedback'
+    return
+  }
 
   if (!wallet.address) {
     alert('Connect wallet to verify your skill')

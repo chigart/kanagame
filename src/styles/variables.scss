@@ -7,6 +7,33 @@ $color-accent-primary: #00ffff;
 $color-accent-secondary: #b300ff;
 $color-accent-purple: #d600ff;
 
+// Status colors
+$color-success: #00ff00;
+$color-error: #ff0000;
+
+// Background overlays
+$color-overlay-dark: rgba(0, 0, 0, 0.3);
+$color-overlay-cyan-light: rgba(0, 255, 255, 0.05);
+$color-overlay-cyan-medium: rgba(0, 255, 255, 0.1);
+$color-overlay-cyan-strong: rgba(0, 255, 255, 0.2);
+$color-overlay-purple-light: rgba(179, 0, 255, 0.05);
+$color-overlay-purple-medium: rgba(179, 0, 255, 0.1);
+$color-overlay-success-light: rgba(0, 255, 0, 0.1);
+$color-overlay-error-light: rgba(255, 0, 0, 0.1);
+
+// Text shadows and glows
+$text-shadow-cyan: 0 0 10px rgba(0, 255, 255, 0.5);
+$text-shadow-success: 0 0 5px rgba(0, 255, 0, 0.5);
+$text-shadow-cyan-strong: 0 0 10px rgba(0, 255, 255, 0.5);
+
+// Border colors
+$border-cyan-light: rgba(0, 255, 255, 0.2);
+$border-success: #00ff00;
+$border-error: #ff0000;
+
+// Placeholder colors
+$placeholder-cyan: rgba(0, 255, 255, 0.5);
+
 // Monospace font for cyberpunk feel
 $font-main: 'JetBrains Mono', 'Courier New', monospace;
 
@@ -20,6 +47,8 @@ $glow-purple:
 $glow-strong:
   0 0 15px rgba(0, 255, 255, 0.8),
   0 0 30px rgba(0, 255, 255, 0.5);
+$glow-success: 0 0 10px rgba(0, 255, 0, 0.3);
+$glow-error: 0 0 10px rgba(255, 0, 0, 0.3);
 
 $radius: 6px;
 $transition: 0.2s ease;
