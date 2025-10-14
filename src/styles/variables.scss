@@ -1,8 +1,19 @@
+// Cyberpunk Minimal Color Palette
 $color-bg: #0a0a0a;
-$color-text: #ffffff;
-$color-accent: #e53935;
+$color-bg-secondary: #0d0d0d;
+$color-text: #00ffff;
+$color-text-secondary: #ffffff;
+$color-accent-primary: #00ffff;
+$color-accent-secondary: #b300ff;
+$color-accent-purple: #d600ff;
 
-$font-main: 'Noto Sans JP', sans-serif;
+// Monospace font for cyberpunk feel
+$font-main: 'JetBrains Mono', 'Courier New', monospace;
+
+// Glow effects
+$glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+$glow-purple: 0 0 10px rgba(179, 0, 255, 0.5), 0 0 20px rgba(179, 0, 255, 0.3);
+$glow-strong: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5);
 
 $radius: 6px;
 $transition: 0.2s ease;

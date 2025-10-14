@@ -9,19 +9,33 @@ body {
   background: $color-bg;
   color: $color-text;
   font-family: $font-main;
+  min-height: 100vh;
 }
 
 button {
-  border: none;
+  background: transparent;
+  color: $color-accent-primary;
+  padding: 0.5rem 1rem;
   border-radius: $radius;
   cursor: pointer;
-  transition: background $transition;
-}
-
-.btn {
-  background: #333;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  border: 1px solid $color-accent-primary;
+  font-family: $font-main;
+  transition: all $transition;
+  
+  &:hover:not(:disabled) {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: $glow-cyan;
+    transform: translateY(-1px);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
 }

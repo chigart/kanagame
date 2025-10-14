@@ -5,7 +5,7 @@
     <KanaDisplay v-if="phase === 'memorize'" :kanaList="currentKana" @done="toInput" />
     <InputPhase v-if="phase === 'input'" :kanaList="currentKana" @finished="onScore" />
     <ScoreScreen v-if="phase === 'score'" :score="score" @restart="startGame" />
-    <button v-if="phase === 'idle' && wallet.address !== null" class="btn" @click="startGame">
+    <button v-if="phase === 'idle' && wallet.address !== null" @click="startGame">
       Start Game
     </button>
   </div>

@@ -29,11 +29,30 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@use '../styles/variables' as *;
+
 .kana-display {
   display: flex;
   gap: 1.5rem;
   font-size: 4rem;
   justify-content: center;
   align-items: center;
+  
+  span {
+    color: $color-accent-primary;
+    text-shadow: $glow-cyan;
+    font-family: $font-main;
+    font-weight: 600;
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: $glow-cyan;
+  }
+  100% {
+    text-shadow: $glow-strong;
+  }
 }
 </style>
