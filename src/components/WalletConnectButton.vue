@@ -1,6 +1,8 @@
 <template>
-  <button class="btn" @click="connect">
-    {{ wallet.address ? shortAddress(wallet.address) : 'Connect Wallet' }}
+  <button class="btn" :disabled="wallet.isSigning" @click="connect">
+    <span v-if="wallet.isSigning">Signing...</span>
+    <span v-else-if="wallet.address">{{ shortAddress(wallet.address) }}</span>
+    <span v-else>Connect Wallet</span>
   </button>
 </template>
 
@@ -12,16 +14,8 @@ function shortAddress(addr: string) {
 }
 
 async function connect() {
-  await wallet.connect()
+  if (!wallet.isSigning) {
+    await wallet.connect()
+  }
 }
 </script>
-
-<style scoped>
-.btn {
-  background: #333;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-</style>

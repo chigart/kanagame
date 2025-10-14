@@ -1,7 +1,7 @@
 <template>
   <div class="leaderboard">
     <h2>Leaderboard</h2>
-    <div v-for="(item, i) in leaderboard.entries" :key="i" class="entry">
+    <div v-for="(item, i) in leaderboard.entries.slice(0, 5)" :key="i" class="entry">
       <span>{{ shortAddress(item.address) }}</span>
       <span>{{ item.score }}%</span>
     </div>

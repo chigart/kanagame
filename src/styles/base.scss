@@ -17,3 +17,11 @@ button {
   cursor: pointer;
   transition: background $transition;
 }
+
+.btn {
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}

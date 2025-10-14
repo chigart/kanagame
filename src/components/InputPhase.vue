@@ -45,5 +45,6 @@ input {
   font-size: 1.2rem;
   border-radius: 6px;
   border: 1px solid #ccc;
+  width: 150px;
 }
 </style>
