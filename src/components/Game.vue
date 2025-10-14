@@ -65,6 +65,10 @@ function startGame() {
 }
 
 function openScore() {
+  if (gameSettings.gameMode === 'simplified') {
+    phase.value = 'idle'
+    return
+  }
   phase.value = 'score'
 }
 
@@ -126,7 +130,7 @@ async function onScore(result: number) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  padding: 1rem;
+  gap: 1rem;
 }
 </style>

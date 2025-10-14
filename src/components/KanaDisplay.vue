@@ -44,6 +44,10 @@ onUnmounted(() => {
     font-family: $font-main;
     font-weight: 600;
     animation: pulse 2s ease-in-out infinite alternate;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.5rem;
+    }
   }
 }
 

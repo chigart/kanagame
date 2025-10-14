@@ -35,6 +35,15 @@ function shortAddress(a: string) {
     font-weight: 600;
     margin: 0 0 1rem 0;
     text-align: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 0;
+    padding: 0.5rem;
   }
 }
 

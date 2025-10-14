@@ -59,6 +59,10 @@ const groupedKana = computed(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.5rem;
+  }
 }
 
 .library-title {
@@ -75,6 +79,11 @@ const groupedKana = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
   gap: 2rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 0.5rem;
+  }
 }
 
 .kana-group {
@@ -88,6 +97,10 @@ const groupedKana = computed(() => {
     box-shadow: $glow-purple;
     background: $color-overlay-cyan-medium;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.5rem;
+  }
 }
 
 .group-title {
@@ -97,12 +110,21 @@ const groupedKana = computed(() => {
   font-family: $font-main;
   font-weight: 600;
   text-shadow: $text-shadow-cyan;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .kana-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 0.5rem;
+  }
 }
 
 .kana-item {
@@ -119,6 +141,10 @@ const groupedKana = computed(() => {
     background: $color-overlay-purple-medium;
     box-shadow: $glow-purple;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.5rem;
+  }
 }
 
 .kana-char {
@@ -128,6 +154,11 @@ const groupedKana = computed(() => {
   font-family: $font-main;
   font-weight: 600;
   margin-bottom: 0.5rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 1.5rem;
+    margin: 0;
+  }
 }
 
 .romaji {

@@ -11,10 +11,16 @@ import GameSettings from './components/GameSettings.vue'
 </template>
 
 <style lang="scss" scoped>
+@use './styles/variables' as *;
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 1rem;
+  }
 }
 </style>

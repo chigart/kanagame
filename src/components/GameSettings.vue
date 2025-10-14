@@ -4,13 +4,13 @@
       <h3 class="section-title">Kana Type</h3>
       <div class="button-group">
         <button
-          :class="['kana-button', { active: gameSettings.kanaType === 'hiragana' }]"
+          :class="['button', { active: gameSettings.kanaType === 'hiragana' }]"
           @click="gameSettings.setKanaType('hiragana')"
         >
           Hiragana
         </button>
         <button
-          :class="['kana-button', { active: gameSettings.kanaType === 'katakana' }]"
+          :class="['button', { active: gameSettings.kanaType === 'katakana' }]"
           @click="gameSettings.setKanaType('katakana')"
         >
           Katakana
@@ -22,19 +22,19 @@
       <h3 class="section-title">Game Mode</h3>
       <div class="button-group">
         <button
-          :class="['mode-button', { active: gameSettings.gameMode === 'standard' }]"
+          :class="['button', { active: gameSettings.gameMode === 'standard' }]"
           @click="gameSettings.setGameMode('standard')"
         >
           Standard
         </button>
         <button
-          :class="['mode-button', { active: gameSettings.gameMode === 'simplified' }]"
+          :class="['button', { active: gameSettings.gameMode === 'simplified' }]"
           @click="gameSettings.setGameMode('simplified')"
         >
           Simplified
         </button>
         <button
-          :class="['mode-button', { active: gameSettings.gameMode === 'library' }]"
+          :class="['button', { active: gameSettings.gameMode === 'library' }]"
           @click="gameSettings.setGameMode('library')"
         >
           Library
@@ -59,12 +59,23 @@ import { gameSettings } from '../stores/gameSettings'
   border: 1px solid $color-accent-secondary;
   border-radius: $radius;
   backdrop-filter: blur(10px);
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
 }
 
 .settings-section {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    gap: 0.5rem;
+  }
 }
 
 .section-title {
@@ -78,12 +89,13 @@ import { gameSettings } from '../stores/gameSettings'
 
 .button-group {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.kana-button,
-.mode-button {
+.button {
+  min-width: 144px;
   border: 1px solid $color-accent-secondary;
   background: $color-overlay-cyan-light;
   color: $color-text;
@@ -104,13 +116,10 @@ import { gameSettings } from '../stores/gameSettings'
     text-shadow: $glow-cyan;
     box-shadow: $glow-cyan;
   }
-}
 
-.mode-button {
-  min-width: 144px;
-}
-
-.kana-button {
-  min-width: 100px;
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
 }
 </style>

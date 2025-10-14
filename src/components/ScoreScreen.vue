@@ -26,6 +26,10 @@ defineProps<{ score: number }>()
     font-size: 2.5rem;
     margin: 0;
     animation: scoreGlow 2s ease-in-out infinite alternate;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1rem;
+    }
   }
 }
 

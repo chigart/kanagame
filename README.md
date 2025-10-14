@@ -1,7 +1,7 @@
 Kana Memory Game
 https://kanagame.netlify.app/
 
-You need Metamask to use it
+You need Metamask to use standart mode
 
 TODO
 

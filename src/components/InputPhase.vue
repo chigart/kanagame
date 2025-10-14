@@ -12,10 +12,10 @@
           incorrect: showAnswers && answers[i] !== item.romaji && answers[i] !== '',
         }"
       />
-      <span v-if="showAnswers" class="correct-answer">{{ item.romaji }}</span>
+      <span class="correct-answer">{{ showAnswers ? item.romaji : '' }}</span>
     </div>
-    <button v-if="!showAnswers" @click="finish">Submit</button>
   </div>
+  <button v-if="!showAnswers" @click="finish">Submit</button>
 </template>
 
 <script setup lang="ts">
@@ -48,8 +48,8 @@ function finish() {
 .input-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   border: 1px solid $color-accent-secondary;
   border-radius: $radius;
   background: $color-overlay-purple-light;
@@ -59,16 +59,25 @@ function finish() {
     box-shadow: $glow-purple;
     background: $color-overlay-purple-medium;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0;
+  }
 }
 
 .kana {
+  min-width: 120px;
   font-size: 3rem;
   color: $color-accent-primary;
   text-shadow: $glow-cyan;
   font-family: $font-main;
   font-weight: 600;
-  min-width: 80px;
   text-align: center;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 2rem;
+    min-width: 80px;
+  }
 }
 
 input {
@@ -109,13 +118,25 @@ input {
     cursor: not-allowed;
     opacity: 0.8;
   }
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+    width: 65px;
+  }
 }
 
 .correct-answer {
+  min-width: 50px;
   color: $color-success;
   font-weight: 600;
   font-size: 1.1rem;
   text-shadow: $text-shadow-success;
   margin-left: 0.5rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+  }
 }
 </style>
