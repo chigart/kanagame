@@ -8,8 +8,11 @@
         :id="i.toString()"
         :readonly="showAnswers"
         :class="{
-          correct: showAnswers && answers[i] === item.romaji,
-          incorrect: showAnswers && answers[i] !== item.romaji && answers[i] !== '',
+          correct: showAnswers && answers[i]?.toLowerCase() === item.romaji.toLowerCase(),
+          incorrect:
+            showAnswers &&
+            answers[i]?.toLowerCase() !== item.romaji.toLowerCase() &&
+            answers[i] !== '',
         }"
       />
       <span class="correct-answer">{{ showAnswers ? item.romaji : '' }}</span>
@@ -30,7 +33,9 @@ const emit = defineEmits(['finished'])
 const answers = ref<string[]>(Array(props.kanaList.length).fill(''))
 
 function finish() {
-  const correct = props.kanaList.filter((item, i) => item.romaji === answers.value[i])
+  const correct = props.kanaList.filter(
+    (item, i) => item.romaji.toLowerCase() === answers.value[i]?.toLowerCase()
+  )
   const score = (correct.length / props.kanaList.length) * 100
   emit('finished', score)
 }
