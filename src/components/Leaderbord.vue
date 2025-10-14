@@ -1,5 +1,5 @@
 <template>
-  <div class="leaderboard">
+  <div class="leaderboard" v-if="leaderboard.entries.length > 0">
     <h2>Leaderboard</h2>
     <div v-for="(item, i) in leaderboard.entries.slice(0, 5)" :key="i" class="entry">
       <span>{{ shortAddress(item.address) }}</span>
@@ -27,7 +27,7 @@ function shortAddress(a: string) {
   border: 1px solid $color-accent-secondary;
   border-radius: $radius;
   background: rgba(179, 0, 255, 0.05);
-  
+
   h2 {
     color: $color-accent-primary;
     text-shadow: $glow-cyan;
@@ -47,21 +47,21 @@ function shortAddress(a: string) {
   font-family: $font-main;
   color: $color-text;
   transition: all $transition;
-  
+
   &:hover {
     background: rgba(0, 255, 255, 0.05);
     color: $color-accent-primary;
   }
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   span:first-child {
     color: $color-accent-secondary;
     font-weight: 500;
   }
-  
+
   span:last-child {
     color: $color-accent-primary;
     font-weight: 600;

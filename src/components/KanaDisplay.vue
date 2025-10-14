@@ -5,7 +5,7 @@
       :key="i"
       :initial="{ opacity: 0, y: 20 }"
       :animate="{ opacity: 1, y: 0 }"
-      :transition="{ delay: i * 0.4, duration: 0.6 }"
+      :transition="{ delay: i * 0.1, duration: 0.2 }"
     >
       {{ item.kana }}
     </motion.span>
@@ -21,7 +21,7 @@ const emit = defineEmits(['done'])
 
 let timeoutId: number
 
-onMounted(() => (timeoutId = setTimeout(() => emit('done'), 3000)))
+onMounted(() => (timeoutId = setTimeout(() => emit('done'), 1000)))
 
 onUnmounted(() => {
   clearTimeout(timeoutId)
@@ -37,7 +37,7 @@ onUnmounted(() => {
   font-size: 4rem;
   justify-content: center;
   align-items: center;
-  
+
   span {
     color: $color-accent-primary;
     text-shadow: $glow-cyan;

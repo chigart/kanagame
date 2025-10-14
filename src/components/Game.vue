@@ -1,11 +1,20 @@
 <template>
   <div class="game-container">
     <WalletConnectionButton />
-    <Leaderbord v-if="phase === 'idle' || phase === 'score'" />
     <KanaDisplay v-if="phase === 'memorize'" :kanaList="currentKana" @done="toInput" />
-    <InputPhase v-if="phase === 'input'" :kanaList="currentKana" @finished="onScore" />
+    <InputPhase
+      v-if="phase === 'input' || phase === 'feedback'"
+      :kanaList="currentKana"
+      :showAnswers="phase === 'feedback'"
+      @finished="onScore"
+    />
+    <Leaderbord v-if="phase === 'idle' || phase === 'score'" />
     <ScoreScreen v-if="phase === 'score'" :score="score" @restart="startGame" />
-    <button v-if="phase === 'idle' && wallet.address !== null" @click="startGame">
+    <button v-if="phase === 'feedback'" @click="openScore">Next</button>
+    <button
+      v-if="phase === 'idle' || (phase === 'score' && wallet.address !== null)"
+      @click="startGame"
+    >
       Start Game
     </button>
   </div>
@@ -22,7 +31,7 @@ import { leaderboard } from '../stores/leaderboard'
 import Leaderbord from './Leaderbord.vue'
 import WalletConnectionButton from './WalletConnectButton.vue'
 
-const phase = ref<'idle' | 'memorize' | 'input' | 'score'>('idle')
+const phase = ref<'idle' | 'memorize' | 'input' | 'feedback' | 'score'>('idle')
 const currentKana = ref<{ kana: string; romaji: string }[]>([])
 const score = ref(0)
 
@@ -33,6 +42,10 @@ function shuffle<T>(array: T[]) {
 function startGame() {
   currentKana.value = shuffle(kanaList).slice(0, 5)
   phase.value = 'memorize'
+}
+
+function openScore() {
+  phase.value = 'score'
 }
 
 function toInput() {
@@ -58,7 +71,7 @@ async function onScore(result: number) {
       time: new Date().toISOString(),
     })
 
-    phase.value = 'score'
+    phase.value = 'feedback'
   } catch (error) {
     console.error('Failed to sign message:', error)
 
@@ -89,6 +102,6 @@ async function onScore(result: number) {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin: 2rem;
+  padding: 2rem;
 }
 </style>

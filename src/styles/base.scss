@@ -21,17 +21,17 @@ button {
   border: 1px solid $color-accent-primary;
   font-family: $font-main;
   transition: all $transition;
-  
+
   &:hover:not(:disabled) {
     background: rgba(0, 255, 255, 0.1);
     box-shadow: $glow-cyan;
     transform: translateY(-1px);
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0);
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;

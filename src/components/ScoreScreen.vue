@@ -1,7 +1,6 @@
 <template>
   <div class="score-screen">
     <h2>Your Score: {{ score }}</h2>
-    <button @click="$emit('restart')">Play Again</button>
   </div>
 </template>
 
@@ -18,7 +17,7 @@ defineProps<{ score: number }>()
   gap: 1rem;
   align-items: center;
   font-size: 1.5rem;
-  
+
   h2 {
     color: $color-accent-primary;
     text-shadow: $glow-cyan;

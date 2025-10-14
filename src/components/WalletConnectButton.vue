@@ -24,11 +24,8 @@ async function connect() {
 @use '../styles/variables' as *;
 
 .wallet-btn {
-  position: relative;
-  overflow: hidden;
-  
   &:not(:disabled):not(:hover) {
-    &[class*="connected"] {
+    &[class*='connected'] {
       border-color: $color-accent-secondary;
       color: $color-accent-secondary;
       box-shadow: $glow-purple;
