@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 const props = defineProps<{
   kanaList: { kana: string; romaji: string }[]
@@ -30,7 +30,11 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['finished'])
 
-const answers = ref<string[]>(Array(props.kanaList.length).fill(''))
+const answers = ref<string[]>([])
+
+watchEffect(() => {
+  answers.value = Array(props.kanaList.length).fill('')
+})
 
 function finish() {
   const correct = props.kanaList.filter(
