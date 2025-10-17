@@ -66,7 +66,7 @@ function startGame() {
 
 function openScore() {
   if (gameSettings.gameMode === 'simplified') {
-    phase.value = 'input'
+    startGame()
     return
   }
   phase.value = 'score'

@@ -31,7 +31,7 @@
           :class="['button', { active: gameSettings.gameMode === 'simplified' }]"
           @click="gameSettings.setGameMode('simplified')"
         >
-          Simplified
+          Fast Game
         </button>
         <button
           :class="['button', { active: gameSettings.gameMode === 'library' }]"
