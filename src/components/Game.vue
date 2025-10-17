@@ -56,7 +56,7 @@ const currentKana = ref<{ kana: string; romaji: string }[]>([])
 const score = ref(0)
 
 function shuffle<T>(array: T[]) {
-  return array.sort(() => Math.random() - 0.5)
+  return [...array].sort(() => Math.random() - 0.5)
 }
 
 function startGame() {
